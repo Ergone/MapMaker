@@ -1,0 +1,26 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    background: #ffffff;
+    cursor: grab;
+}
+
+canvas:active {
+    cursor: grabbing;
+}
+
+#coordinates {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #ccc;
+    font-family: monospace;
+}
