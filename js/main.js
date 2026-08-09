@@ -2,6 +2,7 @@ import { Camera } from "./Camera.js";
 import { Grid } from "./Grid.js";
 import { InputManager } from "./InputManager.js";
 import { Coordinate } from "./Coordinate.js";
+import { Tools } from "./Tools.js";
 
 const canvas = document.getElementById("grid");
 
@@ -9,6 +10,10 @@ const canvas = document.getElementById("grid");
 const camera = new Camera();
 const grid = new Grid(canvas, camera);
 const coordinates = new Coordinate(document.getElementById("coordinates"));
+// Bar d'outils permettants de modifier les interactions sur le canvas
+const tools = new Tools(document.getElementById("tools"),
+                                document.getElementById("menu"),
+                                document.getElementById("modif"));
 
 /** Redessin */
 function draw() {
@@ -19,6 +24,7 @@ function draw() {
 new InputManager(
     canvas,
     camera,
+    tools,
     draw
 );
 

@@ -1,9 +1,10 @@
 export class InputManager {
 
-    constructor(canvas, camera, onChange) {
+    constructor(canvas, camera,tools, onChange) {
 
         this.canvas = canvas;
         this.camera = camera;
+        this.tools = tools;
         this.onChange = onChange;
 
         this.dragging = false;

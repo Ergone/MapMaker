@@ -15,9 +15,40 @@ canvas:active {
     cursor: grabbing;
 }
 
+#tools {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 52px;
+    padding: 6px 10px;
+    border-bottom: 1px solid #ccc;
+    background: #FFFFFF;
+    font-family: monospace;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+#menu {
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/menu.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#modif {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    background-image: url('../images/crayon.png');
+    background-size: cover;
+    background-position: center;
+}
+
 #coordinates {
     position: fixed;
-    top: 10px;
+    top: 65px;
     left: 10px;
     padding: 6px 10px;
     background: rgba(255,255,255,0.9);
