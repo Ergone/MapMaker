@@ -42,6 +42,11 @@ export class InputManager {
             event => this.wheel(event),
             { passive: false }
         );
+
+        this.tools.menu.addEventListener(
+            "click",
+            event => this.toolClick(event)
+        )
     }
 
     mouseDown(event) {
@@ -107,5 +112,9 @@ export class InputManager {
             this.camera.zoom;
 
         this.onChange();
+    }
+
+    toolClick(event) {
+        this.tools.createMenu(event);
     }
 }
