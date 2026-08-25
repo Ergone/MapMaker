@@ -22,7 +22,7 @@ function draw() {
 
 /** Gestion souris */
 new InputManager(
-    canvas,
+    grid,
     camera,
     tools,
     draw

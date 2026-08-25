@@ -7,6 +7,8 @@ export class Grid {
 
         this.width = 0;
         this.height = 0;
+        this.mode = "";
+        this.carre = [];
     }
 
     resize() {
@@ -61,5 +63,21 @@ export class Grid {
         ctx.moveTo(camera.offsetX, 0);
         ctx.lineTo(camera.offsetX, this.height);
         ctx.stroke();
+
+        this.carre.forEach(p =>{ // Pas fini clairement
+
+            const screenX = camera.offsetX + (p.x * step);
+            const screenY = camera.offsetY + (p.y * step); // ou - si Y est inversé
+
+            ctx.fillRect(screenX, screenY, 1, 1);
+            ctx.strokeRect(screenX, screenY, 1, 1);
+
+            ctx.fillStyle = 'skyblue';
+            ctx.fillRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, 1);
+            console.log(Math.trunc(screenX));
+            ctx.strokeStyle = 'black';  // Couleur du contour
+            ctx.lineWidth = 2;
+            ctx.strokeRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, camera.zoom);
+        })
     }
 }

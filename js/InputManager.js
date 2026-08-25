@@ -1,8 +1,9 @@
 export class InputManager {
 
-    constructor(canvas, camera,tools, onChange) {
+    constructor(grid, camera,tools, onChange) {
 
-        this.canvas = canvas;
+        this.grid = grid;
+        this.canvas = grid.canvas;
         this.camera = camera;
         this.tools = tools;
         this.onChange = onChange;
@@ -43,9 +44,19 @@ export class InputManager {
             { passive: false }
         );
 
+        this.canvas.addEventListener(
+            "click",
+            event => this.click(event),
+        );
+
         this.tools.menu.addEventListener(
             "click",
-            event => this.toolClick(event)
+            event => this.menuClick(event)
+        );
+
+        this.tools.modif.addEventListener(
+            "click",
+            event => this.modifClick(event)
         )
     }
 
@@ -114,7 +125,48 @@ export class InputManager {
         this.onChange();
     }
 
-    toolClick(event) {
+    click(event) {
+        if(this.grid.mode === "Point") {
+            const rect = this.canvas.getBoundingClientRect();
+
+            // Coordonnées brutes du clic par rapport au coin haut-gauche du canvas HTML
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            // Application de la formule inverse (dé-zoom et dé-décalage)
+            const worldX = (mouseX - this.camera.offsetY) / this.camera.zoom;
+            const worldY = (mouseY - this.camera.offsetY) / this.camera.zoom;
+
+            const gridX = Math.floor(worldX);
+            const gridY = Math.floor(worldY);
+
+            this.grid.carre.push({ x: gridX, y: gridY });
+
+            this.grid.draw();
+        }
+    }
+
+    menuClick(event) {
         this.tools.createMenu(event);
+    }
+
+    modifClick(event) {
+        this.tools.createModif(event);
+        const point = document.getElementById('modif-list').children[0];
+        point.addEventListener(
+            "click",
+            event => this.addModePoint(event,point)
+        )
+    }
+
+    addModePoint(event, point) {
+        if (point.style.backgroundColor === "green") {
+            point.style.removeProperty("background-color");
+            this.grid.mode = "";
+        } else {
+            point.style.backgroundColor = "green";
+            this.grid.mode = "Point";
+        }
+
     }
 }
