@@ -72,9 +72,9 @@ export class Grid {
             ctx.fillRect(screenX, screenY, 1, 1);
             ctx.strokeRect(screenX, screenY, 1, 1);
 
-            ctx.fillStyle = 'skyblue';
-            ctx.fillRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, 1);
-            console.log(Math.trunc(screenX));
+            ctx.fillStyle = 'black';
+            ctx.fillRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, camera.zoom);
+
             ctx.strokeStyle = 'black';  // Couleur du contour
             ctx.lineWidth = 2;
             ctx.strokeRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, camera.zoom);

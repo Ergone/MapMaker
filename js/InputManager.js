@@ -134,8 +134,8 @@ export class InputManager {
             const mouseY = event.clientY - rect.top;
 
             // Application de la formule inverse (dé-zoom et dé-décalage)
-            const worldX = (mouseX - this.camera.offsetY) / this.camera.zoom;
-            const worldY = (mouseY - this.camera.offsetY) / this.camera.zoom;
+            const worldX = (mouseX - this.camera.offsetX) / this.camera.getStep();
+            const worldY = (mouseY - this.camera.offsetY) / this.camera.getStep();
 
             const gridX = Math.floor(worldX);
             const gridY = Math.floor(worldY);

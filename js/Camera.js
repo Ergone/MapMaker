@@ -28,7 +28,7 @@ export class Camera {
     }
 
     setZoom(zoom) {
-        this.zoom = Math.max(0.01, Math.min(zoom, 50));
+        this.zoom = Math.max(2.5, Math.min(zoom, 50));
     }
 
     getStep() {
