@@ -140,9 +140,19 @@ export class InputManager {
             const gridX = Math.floor(worldX);
             const gridY = Math.floor(worldY);
 
-            this.grid.carre.push({ x: gridX, y: gridY });
+            this.addCarre({ x: gridX, y: gridY, color: 'black'})
 
             this.grid.draw();
+        }
+    }
+
+    addCarre(newCarre) {
+        const isDuplicate = this.grid.carre.some(
+            el => el.x === newCarre.x && el.y === newCarre.y && el.color === newCarre.color
+        );
+
+        if (!isDuplicate) {
+            this.grid.carre.push(newCarre);
         }
     }
 

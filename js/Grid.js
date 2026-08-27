@@ -67,16 +67,16 @@ export class Grid {
         this.carre.forEach(p =>{ // Pas fini clairement
 
             const screenX = camera.offsetX + (p.x * step);
-            const screenY = camera.offsetY + (p.y * step); // ou - si Y est inversé
+            const screenY = camera.offsetY + (p.y * step);
 
             ctx.fillRect(screenX, screenY, 1, 1);
             ctx.strokeRect(screenX, screenY, 1, 1);
 
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = p.color;
             ctx.fillRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, camera.zoom);
 
-            ctx.strokeStyle = 'black';  // Couleur du contour
-            ctx.lineWidth = 2;
+            ctx.strokeStyle = p.color;  // Couleur du contour
+            ctx.lineWidth = 1;
             ctx.strokeRect(Math.trunc(screenX), Math.trunc(screenY), camera.zoom, camera.zoom);
         })
     }
